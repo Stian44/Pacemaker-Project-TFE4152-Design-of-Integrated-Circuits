@@ -1,0 +1,11 @@
+[Version]
+Version=17.0
+[Designs]
+pacemaker_project=.\Pacemaker_project\Pacemaker_project.adf
+[Browser]
+sort=order
+mode=none
+[Order]
+order=1
+[Expand]
+pacemaker_project=1
