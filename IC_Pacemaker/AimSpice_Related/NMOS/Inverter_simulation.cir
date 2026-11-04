@@ -1,0 +1,68 @@
+[aimspice]
+[description]
+942
+Inverter Simulation
+.include p18_cmos_models_tt.inc
+
+.param L_swipe=0.36U
+
+*Inverter 
+*MP1 OUT A VDD VDD PMOS L={L_swipe} W=0.36U
+
+*MN1 OUT A  0   0  NMOS L={L_swipe} W=0.36U
+
+*--------
+
+*Inverter NMOS stacked
+MP1 OUT A VDD VDD PMOS L={L_swipe} W=0.36U
+
+MN1 OUT A  TS  0  NMOS L={L_swipe} W=0.36U
+MN2 TS  A  0   0  NMOS L={L_swipe} W=0.36U
+
+*--------
+
+*Inverter Double Stacked
+*MP1 TSP A VDD VDD PMOS L={L_swipe} W=0.36U
+*MP2 OUT A TSP VDD PMOS L={L_swipe} W=0.36U
+
+*MN1 OUT A TSN  0  NMOS L={L_swipe} W=0.36U
+*MN2 TSN A  0   0  NMOS L={L_swipe} W=0.36U
+*finn ut av hvorfor 0.36U
+*--------
+
+*Voltage sources
+VDD VDD 0 1.8
+V_A  A  0 1.8
+
+
+
+
+*--------
+*til senere simuleringer
+*MP1 n1 A VDD VDD PMOS L=0.5U W=10U
+*MP2 OUT B n1 VDD PMOS L=0.5U W=10U
+
+*MN1 OUT A n2 0 NMOS L=0.5U W=10U
+*MN2 n2 A 0 0 NMOS L=0.5U W=10U
+
+*MN3 OUT B n3 0 NMOS L=0.5U W=10U
+*MN4 OUT B 0 0 NMOS L=0.5U W=10U
+*V_B B 0 1
+
+
+[options]
+0
+[dc]
+1
+V_A
+0
+1.8
+0.01
+[ana]
+1 1
+0
+1 1
+1 1 -2 6
+1
+i(vdd)
+[end]
