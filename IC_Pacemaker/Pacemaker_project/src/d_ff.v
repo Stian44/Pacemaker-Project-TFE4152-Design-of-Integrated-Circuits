@@ -5,7 +5,7 @@ module d_flipflop (
 	input reset,
 	
 	output Q,
-	output Q_bar
+	output Q_bar		   	
 );
 
 	// -- wire_declaration --
@@ -26,7 +26,7 @@ module d_flipflop (
 	nand (master_rst, D_bar, clk_bar);			//logic reset and set for master 
 		
 	nand (master_reset_bar, master_rst, reset_bar);
-	not  (master_reset, master_reset_bar);		//reset function
+	not  (master_reset, master_reset_bar);		//reset function	  kanskje stack verdier motsatt av den som alltid er på
 	
 	nand (master_q, master_set, master_q_bar);
 	nand (master_q_bar, master_reset, master_q);	//output Q and Q_bar of master	  
@@ -37,5 +37,5 @@ module d_flipflop (
 	nand (slave_rst, master_q_bar, clk); 		//logic reset and set for slave
 		
 	nand (Q, slave_set, Q_bar);
-	nand (Q_bar, slave_rst, Q);					//output Q and Q_bar of slave  
+	nand (Q_bar, slave_rst, Q);				//output Q and Q_bar of slave  
 endmodule

@@ -1,0 +1,31 @@
+Active-HDL 17.0.292.10043 2026-11-17 17:46:58
+
+Elaboration top modules:
+Verilog Module                Pacemaker_FSM_tb
+
+
+------------------------------------------------------------------------------------------------------
+Verilog Module          | Library           | Info | Compiler Version           | Compilation Options
+------------------------------------------------------------------------------------------------------
+Pacemaker_FSM_tb        | Pacemaker_project |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+Pacemaker_FSM           | Pacemaker_project |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+ripple_counter          | Pacemaker_project |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+Digital_Gates           | Pacemaker_project |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+d_flipflop              | Pacemaker_project |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+our_inverter            | Pacemaker_project |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+our_xor                 | Pacemaker_project |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+our_nor                 | Pacemaker_project |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+our_nand                | Pacemaker_project |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------
+Library                 | Comment
+------------------------------------------------------------------------------------------------------
+Pacemaker_project       | None
+------------------------------------------------------------------------------------------------------
+
+
+Simulation Options: asim -O5 +access +w_nets +access +r+w Pacemaker_FSM_tb
+
+
+The performance of simulation is reduced. Version Student Edition

@@ -1,1 +1,7 @@
 .\src\Main system.v
+.\src\d_ff.v
+.\src\Ripple_counter.v
+.\src\ripple_counter_testbench.v
+.\src\Bit Logic.v
+.\src\logic gates.v
+.\src\Main_system_tb.v

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<design-settings>
+	<plugins>
+		<Aldec.Stimuli.1>
+			<hierarchy>
+				<stimuliSet name="StimuliSet1">
+					<stimulus name="reset" strength="default" enabled="false" type="formula">
+						<stimulus_data>
+							<repeat_time value="0fs" enabled="false"/>
+							<cancel_time value="0fs" enabled="false"/>
+							<entries>
+								<entry value="1" time="0fs"/>
+								<entry value="0" time="40ns"/>
+								<entry value="1" time="150ns"/>
+								<entry value="0" time="200ns"/>
+							</entries>
+						</stimulus_data>
+						<signals>
+							<signal path="/d_flipflop/reset"/>
+						</signals>
+					</stimulus>
+					<stimulus name="clk" strength="default" enabled="false" type="clock">
+						<stimulus_data>
+							<period value="20ns"/>
+							<low_value value="0"/>
+							<high_value value="1"/>
+							<starting_value value="low"/>
+							<duty_cycle value="50.000000"/>
+							<offset value="0fs" enabled="false"/>
+							<cancel_time value="0fs" enabled="false"/>
+							<frequency_jitter value="0fs" enabled="false"/>
+							<phase_jitter value="0fs" enabled="false"/>
+						</stimulus_data>
+						<signals>
+							<signal path="/d_flipflop/clk"/>
+						</signals>
+					</stimulus>
+					<stimulus name="D" strength="default" enabled="false" type="clock">
+						<stimulus_data>
+							<period value="80ns"/>
+							<low_value value="0"/>
+							<high_value value="1"/>
+							<starting_value value="low"/>
+							<duty_cycle value="50.000000"/>
+							<offset value="0fs" enabled="false"/>
+							<cancel_time value="0fs" enabled="false"/>
+							<frequency_jitter value="0fs" enabled="false"/>
+							<phase_jitter value="0fs" enabled="false"/>
+						</stimulus_data>
+						<signals>
+							<signal path="/d_flipflop/D"/>
+						</signals>
+					</stimulus>
+				</stimuliSet>
+				<stimuliSet name="StimuliSet2">
+					<stimulus name="clk" strength="default" enabled="false" type="clock">
+						<stimulus_data>
+							<period value="200us"/>
+							<low_value value="0"/>
+							<high_value value="1"/>
+							<starting_value value="low"/>
+							<duty_cycle value="50.000000"/>
+							<offset value="0fs" enabled="false"/>
+							<cancel_time value="0fs" enabled="false"/>
+							<frequency_jitter value="0fs" enabled="false"/>
+							<phase_jitter value="0fs" enabled="false"/>
+						</stimulus_data>
+						<signals>
+							<signal path="/ripple_counter/clk"/>
+						</signals>
+					</stimulus>
+					<stimulus name="reset" strength="default" enabled="false" type="formula">
+						<stimulus_data>
+							<repeat_time value="0fs" enabled="false"/>
+							<cancel_time value="0fs" enabled="false"/>
+							<entries>
+								<entry value="0" time="0fs"/>
+								<entry value="1" time="2sec"/>
+								<entry value="0" time="2010ms"/>
+							</entries>
+						</stimulus_data>
+						<signals>
+							<signal path="/ripple_counter/reset"/>
+						</signals>
+					</stimulus>
+				</stimuliSet>
+				<stimuliSet name="system">
+					<stimulus name="clk" strength="default" enabled="false" type="clock">
+						<stimulus_data>
+							<period value="2ms"/>
+							<low_value value="0"/>
+							<high_value value="1"/>
+							<starting_value value="low"/>
+							<duty_cycle value="50.000000"/>
+							<offset value="0fs" enabled="false"/>
+							<cancel_time value="0fs" enabled="false"/>
+							<frequency_jitter value="0fs" enabled="false"/>
+							<phase_jitter value="0fs" enabled="false"/>
+						</stimulus_data>
+						<signals>
+							<signal path="/Pacemaker_FSM/clk"/>
+						</signals>
+					</stimulus>
+					<stimulus name="reset" strength="default" enabled="false" type="formula">
+						<stimulus_data>
+							<repeat_time value="0fs" enabled="false"/>
+							<cancel_time value="0fs" enabled="false"/>
+							<entries>
+								<entry value="1" time="2ms"/>
+								<entry value="0" time="2010us"/>
+							</entries>
+						</stimulus_data>
+						<signals>
+							<signal path="/Pacemaker_FSM/reset"/>
+						</signals>
+					</stimulus>
+					<stimulus name="H" strength="default" enabled="false" type="formula">
+						<stimulus_data>
+							<repeat_time value="0fs" enabled="false"/>
+							<cancel_time value="0fs" enabled="false"/>
+							<entries>
+								<entry value="0" time="0fs"/>
+								<entry value="1" time="1sec"/>
+								<entry value="0" time="1020ms"/>
+								<entry value="1" time="2900ms"/>
+							</entries>
+						</stimulus_data>
+						<signals>
+							<signal path="/Pacemaker_FSM/H"/>
+						</signals>
+					</stimulus>
+				</stimuliSet>
+			</hierarchy>
+		</Aldec.Stimuli.1>
+	</plugins>
+</design-settings>

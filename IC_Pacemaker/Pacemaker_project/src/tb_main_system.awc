@@ -1,0 +1,49 @@
+<config>
+    <version>
+        3.1
+    </version>
+    <comment>
+    </comment>
+    <databases>
+        <database id="">*virtual*</database>
+        <database id="d4f32d12513da373fc6a41d44f0f0500">tb_main_system.asdb</database>
+    </databases>
+    <gridshown/>
+    <signallists>
+        <signallist id="0">
+        <signal>/Pacemaker_FSM_tb/clk</signal>
+        <signal>/Pacemaker_FSM_tb/H</signal>
+        <signal>/Pacemaker_FSM_tb/reset</signal>
+        <signal>/Pacemaker_FSM_tb/P</signal>
+        <signal>/Pacemaker_FSM_tb/R</signal>
+        <signal>/Pacemaker_FSM_tb/ERROR</signal>
+        </signallist>
+    </signallists>
+    <timebases>
+        <timebase id="0">
+            <time start_time="13842611" end_time="22051268" />
+        </timebase>
+    </timebases>
+    <prefbases>
+        <prefbase id="0" >
+        </prefbase>
+    </prefbases>
+    <bookmarkbases>
+        <bookmarks id="0">
+        </bookmarks>
+    </bookmarkbases>
+    <cursorbases>
+        <cursors id="0">
+            <cursor value="14835927" label="Cursor 1" locked="0" />
+        </cursors>
+    </cursorbases>
+    <measurementbases>
+    </measurementbases>
+    <commentbases>
+        <comments id="0">
+        </comments>
+    </commentbases>
+    <views>
+        <view signallist="0" propertybase="0" prefbase="-1" type="1" bookmarks="0" cursors="0" measurements="-1" comments="-1" />
+    </views>
+</config>

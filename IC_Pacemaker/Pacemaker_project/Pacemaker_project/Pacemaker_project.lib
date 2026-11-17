@@ -1,1 +1,117 @@
+timestamp=1794934012500
 
+[~A]
+C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/Bit Logic.v=0*41209*41869
+C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/Main system.v=0*46620*47410
+C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/Main system.v_d_ff.v_Ripple_counter.v_ripple_counter_testbench.v_Bit Logic.v_logic gates.v_Main_system_tb.v=0*71726*74339
+C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/Main_system_tb.v=0*48396*49141
+C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/Ripple_counter.v=0*34214*34895
+C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/d_ff.v=0*62011*62650
+C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/logic gates.v=0*30908*31570
+C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/ripple_counter_testbench.v=0*32558*33121
+LastVerilogToplevel=Pacemaker_FSM_tb
+ModifyID=35
+Version=74
+
+[~MFT]
+0=15|0Pacemaker_project.mgf|74339|38144
+1=22|1Pacemaker_project.mgf|158213|138773
+3=44|3Pacemaker_project.mgf|58664|51410
+
+[$root]
+A/$root=22|||1*140008
+BinW64/$root=3*52468
+SLP=3*52583
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|c73a565f2ade592f8ac1c68f484c9216f62221ca0bb0a775724021e75df039c7
+
+[Digital_Gates]
+A/Digital_Gates=22|../src/Bit Logic.v|1|1*144485
+BinW64/Digital_Gates=3*54957
+R=../src/Bit Logic.v|1
+SLP=3*55080
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|a1ed8fca2a71442fa23f1ad004d363f279eb0b127d40999e4d6055ab6254c78cceaf9f62900859e2843a2204bcfd6403
+
+[Pacemaker_FSM]
+A/Pacemaker_FSM=22|../src/Main system.v|4|1*140414
+BinW64/Pacemaker_FSM=3*52667
+R=../src/Main system.v|4
+SLP=3*53503
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|422f40e63e58ecdeb7079cdaa719b117eb43eb99ca542b2eecd8ea5886754229d91ac7b5c21d595531e1bae248a14bf7
+
+[Pacemaker_FSM_tb]
+A/Pacemaker_FSM_tb=22|../src/Main_system_tb.v|3|1*158213
+BinW64/Pacemaker_FSM_tb=3*57408
+R=../src/Main_system_tb.v|3
+SLP=3*58664
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|422f40e63e58ecdeb7079cdaa719b1179499fb6be9ae5e4963b66aa87dc86458bdebe2f4860f7828698558b25f3a4ae8
+
+[d_flipflop]
+A/d_flipflop=22|../src/d_ff.v|2|1*147515
+BinW64/d_flipflop=3*55213
+R=../src/d_ff.v|2
+SLP=3*55333
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|f14304628f560a9a8ef9c3ab23ec6f75aa828d11cf2094224bc54945fa492735d84e2f6e4be9f2dbae069d1cafb9aaef
+
+[our_inverter]
+A/our_inverter=22|../src/logic gates.v|27|1*151946
+BinW64/our_inverter=3*56492
+R=../src/logic gates.v|27
+SLP=3*56614
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|02f628d692c1ce644eba6d913151196b01d0770966935e54f3dec3e28c456a02b885a8387ddbb6c97a79b99c519f88f1
+
+[our_nand]
+A/our_nand=22|../src/logic gates.v|1|1*156777
+BinW64/our_nand=3*57179
+R=../src/logic gates.v|1
+SLP=3*57297
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|77c5a41afff11dbd6ea07309e0f54c440602192bf13219adeebae6c40f906a0513c5e685cf3b3e93888f37d16b0c3ebf
+
+[our_nor]
+A/our_nor=22|../src/logic gates.v|14|1*155334
+BinW64/our_nor=3*56954
+R=../src/logic gates.v|14
+SLP=3*57071
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|ab81b69071ab29f78c191f7f57de72ef26527262ddaa47cb266f3a3c4d9b973a20ad08f87302bfb4d66b44c4c79bedd0
+
+[our_xor]
+A/our_xor=22|../src/logic gates.v|37|1*153070
+BinW64/our_xor=3*56729
+R=../src/logic gates.v|37
+SLP=3*56846
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|b648a4aeb9439a1c6811b122684a62d126527262ddaa47cb266f3a3c4d9b973a8e9ee383d5df7dcd22ff6b920030783a
+
+[ripple_counter]
+A/ripple_counter=22|../src/Ripple_counter.v|2|1*142362
+BinW64/ripple_counter=3*54080
+R=../src/Ripple_counter.v|2
+SLP=3*54613
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|115772f36c42c7e2ae47af9716f113a81909eec695a47e0d122f1a7ce561d2536f3b9e33709a823fc038d681d3cda466
+
+[tb_ripple_counter]
+A/tb_ripple_counter=22|../src/ripple_counter_testbench.v|2|1*150739
+BinW64/tb_ripple_counter=3*55455
+R=../src/ripple_counter_testbench.v|2
+SLP=3*56160
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|210cdd107dc202b569e709ae9372bb42ea1e2f091277ab146c89d366ba38a0ddb23415e7728a566c4ae6a6c062606ed5
+
+[testbench_ripple_counter]
+A/testbench_ripple_counter=22|../src/ripple_counter_testbench.v|2|1*37683
+BinW64/testbench_ripple_counter=3*14123
+R=../src/ripple_counter_testbench.v|2
+SLP=3*14835
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|3e23d8d1465e0f5c960595065471db95762072e8b6161aeeebb9274d1d8a4db9c340daa5b3b02a8ca0f34793fbabbfed013314d4c2af457aba93ad5b9b602cde
+
+[~U]
+$root=12|0*69113|
+Digital_Gates=12|0*69946|
+Pacemaker_FSM=12|0*69391|
+Pacemaker_FSM_tb=12|0*71481||0x10
+d_flipflop=12|0*70270|
+our_inverter=12|0*70690|
+our_nand=12|0*71288|
+our_nor=12|0*71097|
+our_xor=12|0*70884|
+ripple_counter=12|0*69703|
+tb_ripple_counter=12|0*70490||0x10
+testbench_ripple_counter=12|0*23501||0x10
+                                                                

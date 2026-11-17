@@ -1,27 +1,43 @@
+	  
 
 
-module FSM (
+module Pacemaker_FSM (
 	input clk,
-	input reset,
-	input H
-	input T,
+	input H,
+	input reset, 				//need an external reset for when booting the system up
 	
-	output P,
-	output R,
-	output ERROR,
+	output reg P,
+	output reg R,
+	output reg ERROR
 );
 
 	reg	A, B;	 			//MSB and LSB
-	wire Next_A, Next_B;  	//Next_MSB and Next_LSB
+	wire Next_A, Next_B;  	   	//Next_MSB and Next_LSB
+	wire w_T;
 	
-	assign ERROR  = A & B;
-	assign P 	  = A & ~B;
-	assign R	  = A & B | ~A & ~B;
-	assign Next_A = ~H(A ^ B);
-	assign Next_B = ~H(A | ~B | ~T);
+	
+	ripple_counter Input_T ( 	//ripple counter for input T
+		.clk(clk),
+		.reset(R),
+		
+		.Q(),
+		.T(w_T)				
+	);
+	
+	
+	Digital_Gates next_state_logic (
+        .H(H),
+        .T(w_T),
+        .A(A),
+        .B(B), 
+		
+        .MSB(Next_A),   		//Feeds into the register
+        .LSB(Next_B)   		//Feeds into the register
+    );
+	
 	
 	always @(posedge clk or posedge reset) begin
-		if (reset) begin
+		if (reset) begin		//Instantiation of system
 			A <= 1'b0;
 			B <= 1'b0;
 		end
@@ -29,5 +45,24 @@ module FSM (
 		   A <= Next_A;
 		   B <= Next_B;
 		end
+	end	   
+	
+	always @(*) begin
+		
+		P = 1'b0;
+		R = 1'b0;
+		ERROR = 1'b0;
+		
+		if(A == 1'b0 && B == 1'b0) begin
+			R = 1'b1;
+		end			
+		else if(A == 1'b1 && B == 1'b0) begin
+			P = 1'b1;
+		end			
+		else if(A == 1'b1 && B == 1'b1) begin
+			R = 1'b1;
+			ERROR = 1'b1;
+		end
 	end
-endmodule
+endmodule		 
+	
