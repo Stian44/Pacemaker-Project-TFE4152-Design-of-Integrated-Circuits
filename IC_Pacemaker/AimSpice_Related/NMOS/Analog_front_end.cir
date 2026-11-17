@@ -1,0 +1,38 @@
+[aimspice]
+[description]
+672
+Analog Front-End Subthreshold 2-Transistor Bias
+
+VDD vdd 0 0.55
+VREF vref 0 0.115
+VQRS vqrs 0 0
+
+.include p18_cmos_models_tt.inc
+
+* 2-transistor bias og halestrom
+MBIASP vbias vbias vdd vdd PMOS W=1u L=1u
+MBIASN vbias vbias 0 0 NMOS W=2.3u L=1u
+MTAIL vtail vbias vdd vdd PMOS W=2u L=1u
+
+* Diff-forsterker
+MP1 vmirr vqrs vtail vdd PMOS W=1u L=0.5u
+MP2 vout1 vref vtail vdd PMOS W=1u L=0.5u
+MN1 vmirr vmirr 0 0 NMOS W=0.5u L=0.5u
+MN2 vout1 vmirr 0 0 NMOS W=0.5u L=0.5u
+
+* Invertere til H
+MP3 vout2 vout1 vdd vdd PMOS W=0.72u L=0.18u
+MN3 vout2 vout1 0 0 NMOS W=0.36u L=0.18u
+MP4 H vout2 vdd vdd PMOS W=0.72u L=0.18u
+MN4 H vout2 0 0 NMOS W=0.36u L=0.18u
+[options]
+0
+[dc]
+1
+VQRS
+0
+0.3
+0.001
+[ana]
+1 0
+[end]

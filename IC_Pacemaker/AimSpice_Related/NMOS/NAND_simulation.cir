@@ -1,0 +1,47 @@
+[aimspice]
+[description]
+796
+NAND Simulation
+.include p18_cmos_models_tt.inc
+
+.param L_value=0.36U
+.param W_value=0.18U
+
+*NAND
+*MP1 OUT  A  VDD VDD PMOS L={L_value} W={W_value}
+*MP2 OUT  B  VDD VDD PMOS L={L_value} W={W_value}
+
+*MN1 OUT  A  MN2D 0  NMOS L={L_value} W={W_value}
+*MN2 MN2D B   0   0  NMOS L={L_value} W={W_value}
+
+
+* NAND PMOS stacked
+MP11 OUT1 A VDD VDD PMOS L={L_value} W={W_value}
+MP12 OUT A OUT1 VDD PMOS L={L_value} W={W_value}
+
+MP21 OUT2 B VDD VDD PMOS L={L_value} W={W_value}
+MP22 OUT B OUT2 VDD PMOS L={L_value} W={W_value}
+
+MN1 OUT A MN2D 0 NMOS L={L_value} W={W_value}
+MN2 MN2D B 0 0 NMOS L={L_value} W={W_value}
+
+* Voltage sources
+VDD VDD 0 DC 1.8
+V_A A 0 DC 1.8
+V_B B 0 DC 1.8
+
+* Convergence aid for floating series nodes
+.nodeset V(OUT1)=1.8 V(OUT2)=1.8 V(MN2D)=0
+
+
+[options]
+0
+[dc]
+1
+V_A
+0
+0.2
+0.01
+[ana]
+1 0
+[end]

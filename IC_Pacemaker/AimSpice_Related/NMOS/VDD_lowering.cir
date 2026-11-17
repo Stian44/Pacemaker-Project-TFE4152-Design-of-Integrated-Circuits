@@ -1,0 +1,93 @@
+[aimspice]
+[description]
+1992
+* Hierarchical AIMSpice Netlist for FSM MSB: H!(A!B + AB!)*(AT)!
+.include p18_cmos_models_ss.inc
+
+.param L_val=0.36U
+.param W_val=0.18U
+.param VDD_val=0.55
+
+* ==========================================================
+* NIVÅ 1: Grunnceller (Leaf cells)
+* ==========================================================
+.subckt INV A OUT VDD
+MP1 OUT A VDD VDD PMOS L={L_val} W={W_val}
+MN1 OUT A 0   0   NMOS L={L_val} W={W_val}
+.ends INV
+
+.subckt NAND2 A B OUT VDD
+MP1 OUT  A VDD  VDD PMOS L={L_val} W={W_val}
+MP2 OUT  B VDD  VDD PMOS L={L_val} W={W_val}
+MN1 OUT  A MN2D 0   NMOS L={L_val} W={W_val}
+MN2 MN2D B 0    0   NMOS L={L_val} W={W_val}
+.ends NAND2
+
+* ==========================================================
+* NIVÅ 2: Mellomblokker (AND2 og XOR2 bygget av Nivå 1)
+* ==========================================================
+.subckt AND2 A B OUT VDD
+XNAND A B N_MID VDD NAND2
+XINV  N_MID OUT VDD INV
+.ends AND2
+
+.subckt XOR2 A B OUT VDD
+X1 A  B  N1  VDD NAND2
+X2 A  N1 N2  VDD NAND2
+X3 N1 B  N3  VDD NAND2
+X4 N2 N3 OUT VDD NAND2
+.ends XOR2
+
+* ==========================================================
+* NIVÅ 3: MSB-logikk -> MSB = H! * (A!B + AB!) * (AT)!
+* ==========================================================
+.subckt MSB_LOGIC A B H T MSB VDD
+XINV_H   H H_bar VDD INV
+XXOR_AB  A B XOR_AB VDD XOR2
+XNAND_AT A T NAND_AT VDD NAND2
+
+XAND1 H_bar XOR_AB  MID1 VDD AND2
+XAND2 MID1  NAND_AT MSB  VDD AND2
+.ends MSB_LOGIC
+
+* ==========================================================
+* TOPPNIVÅ: Testbench for alle 16 tilstander (512 Hz-takt)
+* ==========================================================
+VDD VDD 0 {VDD_val}
+
+* 4-bits binærteller gjennom alle 16 kombinasjoner (0000 til 1111)
+VT T 0 PULSE(0 {VDD_val} 2m  1u 1u 2m  4m)
+VH H 0 PULSE(0 {VDD_val} 4m  1u 1u 4m  8m)
+VB B 0 PULSE(0 {VDD_val} 8m  1u 1u 8m  16m)
+VA A 0 PULSE(0 {VDD_val} 16m 1u 1u 16m 32m)
+
+* Instansier MSB-blokken
+XMSB A B H T MSB VDD MSB_LOGIC
+
+
+[options]
+0
+[dc]
+1
+V_A
+0
+0.2
+0.01
+[tran]
+10U
+32m
+X
+X
+0
+[ana]
+4 1
+0
+1 1
+1 1 -0.2 0.8
+5
+v(t)
+v(h)
+v(b)
+v(a)
+v(msb)
+[end]
