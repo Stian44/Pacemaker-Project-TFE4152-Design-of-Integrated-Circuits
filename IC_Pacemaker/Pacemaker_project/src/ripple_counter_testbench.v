@@ -23,7 +23,7 @@ module tb_ripple_counter;
         #200; 
         reset = 0;			 //after 200ns, the hold time issue should be no problem
 
-        #16000;			//768 cycles * 20ns (+200ns) = 15560, which means at 16000ns T should be able to equal 1
+        #16000;				 //768 cycles * 20ns (+200ns) = 15560, which means at 16000ns T should be able to equal 1
 
         $stop; 				 //stop
     end

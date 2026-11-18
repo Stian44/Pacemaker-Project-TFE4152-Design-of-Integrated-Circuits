@@ -1,4 +1,4 @@
-Active-HDL 17.0.292.10043 2026-11-17 17:46:58
+Active-HDL 17.0.292.10043 2026-11-18 09:23:47
 
 Elaboration top modules:
 Verilog Module                Pacemaker_FSM_tb
@@ -23,9 +23,3 @@ Library                 | Comment
 ------------------------------------------------------------------------------------------------------
 Pacemaker_project       | None
 ------------------------------------------------------------------------------------------------------
-
-
-Simulation Options: asim -O5 +access +w_nets +access +r+w Pacemaker_FSM_tb
-
-
-The performance of simulation is reduced. Version Student Edition

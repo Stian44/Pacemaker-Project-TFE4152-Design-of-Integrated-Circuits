@@ -7,8 +7,8 @@
                  *                                           *
                  *********************************************
 
-	Date: Tue Nov 17 13:47:17 2026
-	Circuit File: C:\NTNU\Semester5\Integrated_circuits\Analog_front_end.cir
+	Date: Wed Nov 18 17:06:18 2026
+	Circuit File: C:\NTNU\Semester5\Integrated_circuits\Pacemaker-Project-TFE4152-Design-of-Integrated-Circuits\IC_Pacemaker\AimSpice_Related\NMOS\Analog_front_end.cir
 	Analysis: DC Transfer Curves
 
 **************************  Circuit Description  **************************
@@ -118,9 +118,9 @@
    103:  
    104:  * Invertere til H
    105:  MP3 vout2 vout1 vdd vdd PMOS W=0.72u L=0.18u
-   106:  MN3 vout2 vout1 0 0 NMOS W=0.36u L=0.18u
+   106:  MN3 vout2 vout1 0 0 NMOS W=0.18u L=0.18u
    107:  MP4 H vout2 vdd vdd PMOS W=0.72u L=0.18u
-   108:  MN4 H vout2 0 0 NMOS W=0.36u L=0.18u
+   108:  MN4 H vout2 0 0 NMOS W=0.18u L=0.18u
    109:  .dc VQRS 0 0.3 0.001
 
 ***************************  Model Parameters  ****************************
@@ -145,12 +145,12 @@
 
 *************************  Simulation Statistics  *************************
 
-	Total number of iterations...........: 658
-	Total analysis time (sec)............: 0.016
-	Time spent in device loading (sec)...: 0.002
+	Total number of iterations...........: 656
+	Total analysis time (sec)............: 0.037
+	Time spent in device loading (sec)...: 0.013
 	Time spent in L-U decomposition (sec): 0
 	Time spent in matrix reordering (sec): 0
-	Time spent in matrix solving (sec)...: 0
+	Time spent in matrix solving (sec)...: 0.002
 
 ***************************  Kernel Messages  *****************************
 

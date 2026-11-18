@@ -7,7 +7,7 @@ VDD vdd 0 0.55
 VREF vref 0 0.115
 VQRS vqrs 0 0
 
-.include p18_cmos_models_tt.inc
+.include p18_cmos_models_ss.inc
 
 * 2-transistor bias og halestrom
 MBIASP vbias vbias vdd vdd PMOS W=1u L=1u
@@ -22,9 +22,9 @@ MN2 vout1 vmirr 0 0 NMOS W=0.5u L=0.5u
 
 * Invertere til H
 MP3 vout2 vout1 vdd vdd PMOS W=0.72u L=0.18u
-MN3 vout2 vout1 0 0 NMOS W=0.36u L=0.18u
+MN3 vout2 vout1 0 0 NMOS W=0.18u L=0.18u
 MP4 H vout2 vdd vdd PMOS W=0.72u L=0.18u
-MN4 H vout2 0 0 NMOS W=0.36u L=0.18u
+MN4 H vout2 0 0 NMOS W=0.18u L=0.18u
 [options]
 0
 [dc]
@@ -34,5 +34,10 @@ VQRS
 0.3
 0.001
 [ana]
-1 0
+1 1
+0
+1 1
+1 1 0 0.6
+1
+v(h)
 [end]

@@ -1,4 +1,4 @@
-timestamp=1794934012500
+timestamp=1794990208727
 
 [~A]
 C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/Bit Logic.v=0*41209*41869
@@ -9,41 +9,44 @@ C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/Ripple_counter.v=0*34214*34895
 C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/d_ff.v=0*62011*62650
 C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/logic gates.v=0*30908*31570
 C:/My_Designs/IC_Pacemaker/Pacemaker_project/src/ripple_counter_testbench.v=0*32558*33121
+C:/NTNU/Semester5/Integrated_circuits/Pacemaker-Project-TFE4152-Design-of-Integrated-Circuits/IC_Pacemaker/Pacemaker_project/src/Bit Logic.v=0*78373*79225
+C:/NTNU/Semester5/Integrated_circuits/Pacemaker-Project-TFE4152-Design-of-Integrated-Circuits/IC_Pacemaker/Pacemaker_project/src/Main system.v_Main_system_tb.v=0*75809*77049
+C:/NTNU/Semester5/Integrated_circuits/Pacemaker-Project-TFE4152-Design-of-Integrated-Circuits/IC_Pacemaker/Pacemaker_project/src/Main_system_tb.v=0*80337*81178
 LastVerilogToplevel=Pacemaker_FSM_tb
-ModifyID=35
+ModifyID=38
 Version=74
 
 [~MFT]
-0=15|0Pacemaker_project.mgf|74339|38144
-1=22|1Pacemaker_project.mgf|158213|138773
-3=44|3Pacemaker_project.mgf|58664|51410
+0=4|0Pacemaker_project.mgf|81178|38144
+1=4|1Pacemaker_project.mgf|166957|147715
+3=8|3Pacemaker_project.mgf|64174|57196
 
 [$root]
-A/$root=22|||1*140008
-BinW64/$root=3*52468
-SLP=3*52583
-Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|c73a565f2ade592f8ac1c68f484c9216f62221ca0bb0a775724021e75df039c7
+A/$root=22|||1*166551
+BinW64/$root=3*63005
+SLP=3*63120
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|c73a565f2ade592f8ac1c68f484c921607bd2b1abebec531301f0d92534a842c
 
 [Digital_Gates]
-A/Digital_Gates=22|../src/Bit Logic.v|1|1*144485
-BinW64/Digital_Gates=3*54957
+A/Digital_Gates=22|../src/Bit Logic.v|1|1*163717
+BinW64/Digital_Gates=3*62749
 R=../src/Bit Logic.v|1
-SLP=3*55080
-Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|a1ed8fca2a71442fa23f1ad004d363f279eb0b127d40999e4d6055ab6254c78cceaf9f62900859e2843a2204bcfd6403
+SLP=3*62872
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|a1ed8fca2a71442fa23f1ad004d363f279eb0b127d40999e4d6055ab6254c78cb9957b05653b659fe6bd478a7bec87b7
 
 [Pacemaker_FSM]
-A/Pacemaker_FSM=22|../src/Main system.v|4|1*140414
-BinW64/Pacemaker_FSM=3*52667
-R=../src/Main system.v|4
-SLP=3*53503
-Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|422f40e63e58ecdeb7079cdaa719b117eb43eb99ca542b2eecd8ea5886754229d91ac7b5c21d595531e1bae248a14bf7
+A/Pacemaker_FSM=22|../src/Main system.v|2|1*160044
+BinW64/Pacemaker_FSM=3*59561
+R=../src/Main system.v|2
+SLP=3*60397
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|422f40e63e58ecdeb7079cdaa719b117eb43eb99ca542b2eecd8ea58867542295ba2d075e94ee1e7048ef3cde7c03985
 
 [Pacemaker_FSM_tb]
-A/Pacemaker_FSM_tb=22|../src/Main_system_tb.v|3|1*158213
-BinW64/Pacemaker_FSM_tb=3*57408
+A/Pacemaker_FSM_tb=22|../src/Main_system_tb.v|3|1*166957
+BinW64/Pacemaker_FSM_tb=3*63204
 R=../src/Main_system_tb.v|3
-SLP=3*58664
-Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|422f40e63e58ecdeb7079cdaa719b1179499fb6be9ae5e4963b66aa87dc86458bdebe2f4860f7828698558b25f3a4ae8
+SLP=3*64174
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|422f40e63e58ecdeb7079cdaa719b1179499fb6be9ae5e4963b66aa87dc864583ebd9781f3ded07a8811dd5bcd7b1408
 
 [d_flipflop]
 A/d_flipflop=22|../src/d_ff.v|2|1*147515
@@ -102,10 +105,10 @@ SLP=3*14835
 Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|3e23d8d1465e0f5c960595065471db95762072e8b6161aeeebb9274d1d8a4db9c340daa5b3b02a8ca0f34793fbabbfed013314d4c2af457aba93ad5b9b602cde
 
 [~U]
-$root=12|0*69113|
-Digital_Gates=12|0*69946|
-Pacemaker_FSM=12|0*69391|
-Pacemaker_FSM_tb=12|0*71481||0x10
+$root=12|0*79910|
+Digital_Gates=12|0*78063|
+Pacemaker_FSM=12|0*75318|
+Pacemaker_FSM_tb=12|0*80156||0x10
 d_flipflop=12|0*70270|
 our_inverter=12|0*70690|
 our_nand=12|0*71288|

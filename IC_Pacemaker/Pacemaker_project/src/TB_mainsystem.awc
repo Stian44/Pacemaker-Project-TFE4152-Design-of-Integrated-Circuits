@@ -20,13 +20,11 @@
         <signal>/Pacemaker_FSM_tb/uut/w_T</signal>
         <signal>/Pacemaker_FSM_tb/uut/A</signal>
         <signal>/Pacemaker_FSM_tb/uut/B</signal>
-        <signal>/Pacemaker_FSM_tb/uut/Next_A</signal>
-        <signal>/Pacemaker_FSM_tb/uut/Next_B</signal>
         </signallist>
     </signallists>
     <timebases>
         <timebase id="0">
-            <time start_time="10370194" end_time="11218652" />
+            <time start_time="13766239" end_time="17160071" />
         </timebase>
     </timebases>
     <prefbases>
@@ -39,7 +37,7 @@
     </bookmarkbases>
     <cursorbases>
         <cursors id="0">
-            <cursor value="16776000" label="Cursor 1" locked="0" />
+            <cursor value="16481304" label="Cursor 1" locked="0" />
         </cursors>
     </cursorbases>
     <measurementbases>
@@ -49,6 +47,6 @@
         </comments>
     </commentbases>
     <views>
-        <view signallist="0" propertybase="0" prefbase="0" type="1" bookmarks="0" cursors="0" measurements="-1" comments="-1" />
+        <view signallist="0" propertybase="0" prefbase="-1" type="1" bookmarks="0" cursors="0" measurements="-1" comments="-1" />
     </views>
 </config>

@@ -27,16 +27,14 @@ module Digital_Gates(
 	our_inverter inverterM6(MSB, m6);  	
 	
 	
-	//LSB = !H * (!B + !A * !T) = !H * !(B * !(!A * !T))
-	wire nB, nT, l1, l2, l3, l4;
-	
-	our_inverter inv_B(nB, B);
-	our_inverter inv_T(nT, T);
-	
-	our_nand nand_nAnT(l1, nA, nT);   // l1 = !(!A * !T) = A + T
-	our_nand nand_Bl1(l2, B, l1);     // l2 = !(B * (A + T)) = !B + !A * !T
-	our_nand nand_final(l3, nH, l2);  // l3 = !(!H * (!B + !A * !T))
-	our_inverter inv_LSB(LSB, l3);    // LSB = !H * (!B + !A * !T)
+	//LSB = !H * (A + !B + !T) = !H * !((!A * B) * T)
+	wire l1, l2, l3, l4;
+
+	our_nand     nand_nAB   (l1, nA, B);   // l1 = !(!A * B)
+	our_inverter inv_l1     (l2, l1);      // l2 = !A * B
+	our_nand     nand_l2T   (l3, l2, T);   // l3 = !(!A * B * T) = A + !B + !T
+	our_nand     nand_final (l4, nH, l3);  // l4 = !(!H * (A + !B + !T))
+	our_inverter inv_LSB    (LSB, l4);     // LSB = !H * (A + !B + !T)
 	
 	//LSB	 
 	//wire l1, l2, l3, l4;

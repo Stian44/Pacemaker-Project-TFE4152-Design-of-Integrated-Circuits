@@ -1,10 +1,8 @@
 	  
-
-
 module Pacemaker_FSM (
 	input clk,
 	input H,
-	input reset, 				//need an external reset for when booting the system up
+	input reset, 				//An external reset for when booting the system up
 	
 	output reg P,
 	output reg R,
@@ -12,11 +10,11 @@ module Pacemaker_FSM (
 );
 
 	reg	A, B;	 			//MSB and LSB
-	wire Next_A, Next_B;  	   	//Next_MSB and Next_LSB
+	wire Next_A, Next_B;  	   	//MSB and LSB for the next state
 	wire w_T;
 	
 	
-	ripple_counter Input_T ( 	//ripple counter for input T
+	ripple_counter Input_T ( 	//Ripple counter for input T
 		.clk(clk),
 		.reset(R),
 		
@@ -47,7 +45,7 @@ module Pacemaker_FSM (
 		end
 	end	   
 	
-	always @(*) begin
+	always @(*) begin	   		//State machine
 		
 		P = 1'b0;
 		R = 1'b0;
