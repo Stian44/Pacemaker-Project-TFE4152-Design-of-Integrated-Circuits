@@ -1,0 +1,51 @@
+[aimspice]
+[description]
+1147
+NOR2 leakage - stacking comparison
+.include p18_cmos_models_ff.inc
+
+VDD vdd 0 0.55
+
+* Worst-case logic levels that follow VDD
+EHI hi 0 vdd 0 0.75
+ELO lo 0 vdd 0 0.25
+
+* Normal NOR2: series PMOS (a on the upper PMOS), parallel NMOS
+.subckt norn y a b vdd
+MPA m a vdd vdd PMOS W=0.18U L=0.36U
+MPB y b m vdd PMOS W=0.18U L=0.36U
+MNA y a 0 0 NMOS W=0.18U L=0.36U
+MNB y b 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+* NMOS-stacked NOR2: each NMOS replaced by two in series
+.subckt nors y a b vdd
+MPA m a vdd vdd PMOS W=0.18U L=0.36U
+MPB y b m vdd PMOS W=0.18U L=0.36U
+MNA1 y a na 0 NMOS W=0.18U L=0.36U
+MNA2 na a 0 0 NMOS W=0.18U L=0.36U
+MNB1 y b nb 0 NMOS W=0.18U L=0.36U
+MNB2 nb b 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+* Normal: AB = 00, 01, 10, 11
+VN00 vdd dn00 0
+XN00 yn00 lo lo dn00 norn
+VN01 vdd dn01 0
+XN01 yn01 lo hi dn01 norn
+VN10 vdd dn10 0
+XN10 yn10 hi lo dn10 norn
+VN11 vdd dn11 0
+XN11 yn11 hi hi dn11 norn
+
+* NMOS-stacked: AB = 00, 01, 10, 11
+VS00 vdd ds00 0
+XS00 ys00 lo lo ds00 nors
+VS01 vdd ds01 0
+XS01 ys01 lo hi ds01 nors
+VS10 vdd ds10 0
+XS10 ys10 hi lo ds10 nors
+VS11 vdd ds11 0
+XS11 ys11 hi hi ds11 nors
+
+[end]

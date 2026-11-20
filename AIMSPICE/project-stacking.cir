@@ -1,0 +1,23 @@
+[aimspice]
+[description]
+367
+NOR2 with stacked pull-down
+.include p18_cmos_models_tt.inc
+
+.param WN=10U LN=0.5U
+.param WP=10U LP=0.5U
+
+MP1 n1  A VDD VDD PMOS L={LP} W={WP}
+MP2 OUT B n1  VDD PMOS L={LP} W={WP}
+
+MN1 OUT A n2 0 NMOS L={LN} W={WN}
+MN2 n2  A 0  0 NMOS L={LN} W={WN}
+MN3 OUT B n3 0 NMOS L={LN} W={WN}
+MN4 n3  B 0  0 NMOS L={LN} W={WN}
+
+VDD VDD 0 1.8
+V_A A 0 0
+V_B B 0 0
+[options]
+0
+[end]

@@ -1,0 +1,53 @@
+[aimspice]
+[description]
+870
+Pacer - level shifter + footer switch
+.include p18_cmos_models_ff.inc
+
+VDDA vdda 0 1.8
+VDD vdd 0 0.55
+
+* P from the FSM (testbench)
+* Nominal:    PULSE(0 0.55 1m 1u 1u 1.953m 10m)
+* Worst case: PULSE(0.1375 0.4125 1m 1u 1u 1.953m 10m)
+VPACE p 0 PULSE(0.55 0.4125 1m 1u 1u 1.953m 10m)
+
+* Inverter on VDD
+MPI p_n p vdd vdd PMOS L=0.18U W=4U
+MNI p_n p 0 0 NMOS L=0.18U W=1U
+
+* Level shifter on VDDA
+MNLA lsb p 0 0 NMOS L=0.18U W=100U
+MNLB p_hv p_n 0 0 NMOS L=0.18U W=100U
+MPLA lsb p_hv vdda vdda PMOS L=7.5U W=0.22U
+MPLB p_hv lsb vdda vdda PMOS L=7.5U W=0.22U
+
+* Reference and NMOS mirror
+RBIAS vdda pn 215k
+MN1 pn pn vs 0 NMOS L=0.5U W=2U
+MN2 pm pn vs 0 NMOS L=0.5U W=2U
+
+* Footer switch
+MSW vs p_hv 0 0 NMOS L=0.18U W=5U
+
+* PMOS mirror 1:500
+MP2 pm pm vdda vdda PMOS L=0.5U W=1.786U
+MP1 out pm vdda vdda PMOS L=0.5U W=893U
+
+ROUT out 0 500
+[tran]
+10u
+10m
+0
+10u
+0
+[ana]
+4 1
+0
+1 1
+1 1 0 5
+3
+v(p)
+v(vs)
+v(out)
+[end]

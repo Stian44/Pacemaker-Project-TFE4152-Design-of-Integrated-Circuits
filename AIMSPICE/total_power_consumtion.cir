@@ -1,0 +1,157 @@
+[aimspice]
+[description]
+4250
+System static power ideal - ff
+.include p18_cmos_models_ff.inc
+
+VDD vdd 0 0.55
+
+* Input levels that follow VDD
+* Ideal inputs (realistic, gates drive gates):  gains 1 and 0
+* Worst-case inputs (pessimistic):              gains 0.75 and 0.25
+EHI hi 0 vdd 0 0.75
+ELO lo 0 vdd 0 0.25
+
+* ---------------- Gates ----------------
+.subckt inv y a vdd
+MP y a vdd vdd PMOS W=0.18U L=0.36U
+MN y a 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+.subckt invs y a vdd
+MP y a vdd vdd PMOS W=0.18U L=0.36U
+MN1 y a s 0 NMOS W=0.18U L=0.36U
+MN2 s a 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+.subckt nand2 y a b vdd
+MPA y a vdd vdd PMOS W=0.18U L=0.36U
+MPB y b vdd vdd PMOS W=0.18U L=0.36U
+MNA y a m 0 NMOS W=0.18U L=0.36U
+MNB m b 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+.subckt nand2p y a b vdd
+MPA1 pa a vdd vdd PMOS W=0.18U L=0.36U
+MPA2 y a pa vdd PMOS W=0.18U L=0.36U
+MPB1 pb b vdd vdd PMOS W=0.18U L=0.36U
+MPB2 y b pb vdd PMOS W=0.18U L=0.36U
+MNA y a m 0 NMOS W=0.18U L=0.36U
+MNB m b 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+.subckt nor2 y a b vdd
+MPA m a vdd vdd PMOS W=0.18U L=0.36U
+MPB y b m vdd PMOS W=0.18U L=0.36U
+MNA y a 0 0 NMOS W=0.18U L=0.36U
+MNB y b 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+.subckt nor2s y a b vdd
+MPA m a vdd vdd PMOS W=0.18U L=0.36U
+MPB y b m vdd PMOS W=0.18U L=0.36U
+MNA1 y a na 0 NMOS W=0.18U L=0.36U
+MNA2 na a 0 0 NMOS W=0.18U L=0.36U
+MNB1 y b nb 0 NMOS W=0.18U L=0.36U
+MNB2 nb b 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+* ---------------- Original next-state logic ----------------
+.subckt logic a b t h ap bp vdd
+XG1 nbt b t vdd nand2
+XG2 ap h nbt vdd nor2
+XG3 anh a h vdd nor2
+XG4 g4 nbt anh vdd nand2
+XN1 bp g4 vdd inv
+.ends
+
+* ---------------- Optimised next-state logic ----------------
+.subckt logico a b t h ap bp vdd
+XG1 nbt b t vdd nand2
+XG2 ap nbt h vdd nor2
+XG3 anh a h vdd nor2s
+XG4 g4 nbt anh vdd nand2p
+XN1 bp g4 vdd invs
+.ends
+
+* ---------------- Original: one ammeter per input state (ABTH) ----------------
+VA0000 vdd da0000 0
+X0000 lo lo lo lo ap0000 bp0000 da0000 logic
+VA0001 vdd da0001 0
+X0001 lo lo lo hi ap0001 bp0001 da0001 logic
+VA0010 vdd da0010 0
+X0010 lo lo hi lo ap0010 bp0010 da0010 logic
+VA0011 vdd da0011 0
+X0011 lo lo hi hi ap0011 bp0011 da0011 logic
+VA0100 vdd da0100 0
+X0100 lo hi lo lo ap0100 bp0100 da0100 logic
+VA0101 vdd da0101 0
+X0101 lo hi lo hi ap0101 bp0101 da0101 logic
+VA0110 vdd da0110 0
+X0110 lo hi hi lo ap0110 bp0110 da0110 logic
+VA0111 vdd da0111 0
+X0111 lo hi hi hi ap0111 bp0111 da0111 logic
+VA1000 vdd da1000 0
+X1000 hi lo lo lo ap1000 bp1000 da1000 logic
+VA1001 vdd da1001 0
+X1001 hi lo lo hi ap1001 bp1001 da1001 logic
+VA1010 vdd da1010 0
+X1010 hi lo hi lo ap1010 bp1010 da1010 logic
+VA1011 vdd da1011 0
+X1011 hi lo hi hi ap1011 bp1011 da1011 logic
+VA1100 vdd da1100 0
+X1100 hi hi lo lo ap1100 bp1100 da1100 logic
+VA1101 vdd da1101 0
+X1101 hi hi lo hi ap1101 bp1101 da1101 logic
+VA1110 vdd da1110 0
+X1110 hi hi hi lo ap1110 bp1110 da1110 logic
+VA1111 vdd da1111 0
+X1111 hi hi hi hi ap1111 bp1111 da1111 logic
+
+* ---------------- Optimised: one ammeter per input state (ABTH) ----------------
+VO0000 vdd do0000 0
+XO0000 lo lo lo lo oap0000 obp0000 do0000 logico
+VO0001 vdd do0001 0
+XO0001 lo lo lo hi oap0001 obp0001 do0001 logico
+VO0010 vdd do0010 0
+XO0010 lo lo hi lo oap0010 obp0010 do0010 logico
+VO0011 vdd do0011 0
+XO0011 lo lo hi hi oap0011 obp0011 do0011 logico
+VO0100 vdd do0100 0
+XO0100 lo hi lo lo oap0100 obp0100 do0100 logico
+VO0101 vdd do0101 0
+XO0101 lo hi lo hi oap0101 obp0101 do0101 logico
+VO0110 vdd do0110 0
+XO0110 lo hi hi lo oap0110 obp0110 do0110 logico
+VO0111 vdd do0111 0
+XO0111 lo hi hi hi oap0111 obp0111 do0111 logico
+VO1000 vdd do1000 0
+XO1000 hi lo lo lo oap1000 obp1000 do1000 logico
+VO1001 vdd do1001 0
+XO1001 hi lo lo hi oap1001 obp1001 do1001 logico
+VO1010 vdd do1010 0
+XO1010 hi lo hi lo oap1010 obp1010 do1010 logico
+VO1011 vdd do1011 0
+XO1011 hi lo hi hi oap1011 obp1011 do1011 logico
+VO1100 vdd do1100 0
+XO1100 hi hi lo lo oap1100 obp1100 do1100 logico
+VO1101 vdd do1101 0
+XO1101 hi hi lo hi oap1101 obp1101 do1101 logico
+VO1110 vdd do1110 0
+XO1110 hi hi hi lo oap1110 obp1110 do1110 logico
+VO1111 vdd do1111 0
+XO1111 hi hi hi hi oap1111 obp1111 do1111 logico
+[dc]
+1
+VDD
+0
+0.8
+0.001
+[ana]
+1 1
+0
+1 1
+1 1 0 5
+1
+vdd
+[end]

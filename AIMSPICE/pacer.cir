@@ -1,0 +1,19 @@
+[aimspice]
+[description]
+255
+Pacer
+.include p18_cmos_models_tt.inc
+
+Vdd Vdd 0 5
+*Vp control 0 0.6
+
+MP1 OUT PM VDD VDD PMOS L=0.5U W=10U
+MP2 PM PM VDD VDD PMOS L=0.5U W=10U
+
+MN1 PN PN 0 0 NMOS L=0.5U W=10U
+MN2 PM PN 0 0 NMOS L=0.5U W=10U
+
+Rbias VDD PN 349
+ROUT OUT 0 500
+
+[end]

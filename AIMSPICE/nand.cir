@@ -1,0 +1,82 @@
+[aimspice]
+[description]
+1168
+NAND2 leakage - stacking comparison
+.include p18_cmos_models_ff.inc
+
+VDD vdd 0 0.4125
+
+* Worst-case logic levels that follow VDD
+EHI hi 0 vdd 0 0.75
+ELO lo 0 vdd 0 0.25
+
+* Normal NAND2: parallel PMOS, series NMOS (a on the upper NMOS)
+.subckt nandn y a b vdd
+MPA y a vdd vdd PMOS W=0.18U L=0.36U
+MPB y b vdd vdd PMOS W=0.18U L=0.36U
+MNA y a m 0 NMOS W=0.18U L=0.36U
+MNB m b 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+* PMOS-stacked NAND2: each PMOS replaced by two in series
+.subckt nandp y a b vdd
+MPA1 pa a vdd vdd PMOS W=0.18U L=0.36U
+MPA2 y a pa vdd PMOS W=0.18U L=0.36U
+MPB1 pb b vdd vdd PMOS W=0.18U L=0.36U
+MPB2 y b pb vdd PMOS W=0.18U L=0.36U
+MNA y a m 0 NMOS W=0.18U L=0.36U
+MNB m b 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+* Normal: AB = 00, 01, 10, 11
+VN00 vdd dn00 0
+XN00 yn00 lo lo dn00 nandn
+VN01 vdd dn01 0
+XN01 yn01 lo hi dn01 nandn
+VN10 vdd dn10 0
+XN10 yn10 hi lo dn10 nandn
+VN11 vdd dn11 0
+XN11 yn11 hi hi dn11 nandn
+
+* PMOS-stacked: AB = 00, 01, 10, 11
+VP00 vdd dp00 0
+XP00 yp00 lo lo dp00 nandp
+VP01 vdd dp01 0
+XP01 yp01 lo hi dp01 nandp
+VP10 vdd dp10 0
+XP10 yp10 hi lo dp10 nandp
+VP11 vdd dp11 0
+XP11 yp11 hi hi dp11 nandp
+[dc]
+1
+VDD
+0.1
+0.8
+0.01
+[ana]
+1 4
+0
+1 1
+1 1 0 1.5E-09
+2
+i(vp00)
+i(vn00)
+0
+1 1
+1 1 0 3E-09
+2
+i(vp01)
+i(vn01)
+0
+1 1
+1 1 0 1E-08
+2
+i(vp11)
+i(vn11)
+0
+1 1
+1 1 0 2.5E-09
+2
+i(vp10)
+i(vn10)
+[end]

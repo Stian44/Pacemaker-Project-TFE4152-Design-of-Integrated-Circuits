@@ -1,0 +1,21 @@
+[aimspice]
+[description]
+294
+NOR Gate non stacking
+.include p18_cmos_models_tt.inc
+
+MP1 n1 A VDD VDD PMOS L=0.5U W=10U
+MP2 OUT B n1 VDD PMOS L=0.5U W=10U
+
+MN1 OUT A 0 0 NMOS L=0.5U W=10U
+MN2 OUT B 0 0 NMOS L=0.5U W=10U
+
+VDD VDD 0 1.8
+V_A A 0 1
+V_B B 0 1
+
+.plot dc id(MN1)
+.plot dc gm(MN1)
+.plot dc rds(MN1)
+
+[end]

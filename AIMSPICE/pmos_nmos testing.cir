@@ -1,0 +1,30 @@
+[aimspice]
+[description]
+746
+Level shifter device currents
+.include p18_cmos_models_ss.inc
+
+* --- Input NMOS (MNLA/MNLB size), on current at the trip point ---
+* Vgs = 0.4125 V (worst-case logic 1), Vds = 1.35 V
+VG1 g1 0 0.4125
+VD1 d1 0 1.35
+M1 d1 g1 0 0 NMOS L=0.18U W=100U
+
+* --- Input NMOS, leakage while holding the off state ---
+* Vgs = 0.1375 V (worst-case logic 0), Vds = 1.8 V
+VG2 g2 0 0.1375
+VD2 d2 0 1.8
+M2 d2 g2 0 0 NMOS L=0.18U W=100U
+
+* --- Input NMOS, leakage at the trip point ---
+* Vgs = 0.1375 V, Vds = 1.35 V
+VG3 g3 0 0.1375
+VD3 d3 0 1.35
+M3 d3 g3 0 0 NMOS L=0.18U W=100U
+
+* --- Pull-up PMOS (MPLA/MPLB size) at the trip point ---
+* Vsg = 1.8 V (gate at 0 V), Vsd = 0.45 V
+VS4 s4 0 1.8
+VD4 d4 0 1.35
+M4 d4 0 s4 s4 PMOS L=10U W=0.22U
+[end]

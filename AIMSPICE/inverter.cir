@@ -1,0 +1,74 @@
+[aimspice]
+[description]
+974
+Inverter leakage - stacking comparison
+.include p18_cmos_models_ff.inc
+
+VDD vdd 0 0.1375
+
+* Worst-case logic levels that follow VDD
+EHI hi 0 vdd 0 0.75
+ELO lo 0 vdd 0 0.25
+
+* Normal inverter
+.subckt invn y a vdd
+MP y a vdd vdd PMOS W=0.18U L=0.36U
+MN y a 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+* NMOS-stacked inverter
+.subckt invs y a vdd
+MP y a vdd vdd PMOS W=0.18U L=0.36U
+MN1 y a s 0 NMOS W=0.18U L=0.36U
+MN2 s a 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+* Double-stacked inverter
+.subckt invd y a vdd
+MP1 sp a vdd vdd PMOS W=0.18U L=0.36U
+MP2 y a sp vdd PMOS W=0.18U L=0.36U
+MN1 y a s 0 NMOS W=0.18U L=0.36U
+MN2 s a 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+* Normal: input 0 and 1
+VN0 vdd dn0 0
+XN0 yn0 lo dn0 invn
+VN1 vdd dn1 0
+XN1 yn1 hi dn1 invn
+
+* NMOS-stacked: input 0 and 1
+VS0 vdd ds0 0
+XS0 ys0 lo ds0 invs
+VS1 vdd ds1 0
+XS1 ys1 hi ds1 invs
+
+* Double-stacked: input 0 and 1
+VD0 vdd dd0 0
+XD0 yd0 lo dd0 invd
+VD1 vdd dd1 0
+XD1 yd1 hi dd1 invd
+
+[dc]
+1
+VDD
+0.1
+0.8
+0.01
+[ana]
+1 2
+0
+1 1
+1 1 0 5E-09
+3
+i(vd1)
+i(vs1)
+i(vn1)
+0
+1 1
+1 1 0 3E-09
+3
+i(vd0)
+i(vs0)
+i(vn0)
+[end]

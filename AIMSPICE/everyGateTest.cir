@@ -1,0 +1,62 @@
+[aimspice]
+[description]
+1353
+Gate minimum VDD
+.include p18_cmos_models_ss.inc
+
+VDD vdd 0 0.55
+
+* Worst-case logic levels that follow VDD
+EHI hi 0 vdd 0 0.75
+ELO lo 0 vdd 0 0.25
+
+* Reference lines for the limits
+E75 ref75 0 vdd 0 0.75
+E25 ref25 0 vdd 0 0.25
+
+* ---------------- Gates (W = 0.18U, L = 0.36U) ----------------
+* NAND2: input a drives the upper NMOS (next to the output)
+.subckt nand2 y a b vdd
+MPA y a vdd vdd PMOS W=0.18U L=0.36U
+MPB y b vdd vdd PMOS W=0.18U L=0.36U
+MNA y a m 0 NMOS W=0.18U L=0.36U
+MNB m b 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+* NOR2: input a drives the upper PMOS (next to VDD)
+.subckt nor2 y a b vdd
+MPA m a vdd vdd PMOS W=0.18U L=0.36U
+MPB y b m vdd PMOS W=0.18U L=0.36U
+MNA y a 0 0 NMOS W=0.18U L=0.36U
+MNB y b 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+.subckt inv y a vdd
+MP y a vdd vdd PMOS W=0.18U L=0.36U
+MN y a 0 0 NMOS W=0.18U L=0.36U
+.ends
+
+* ---------------- Inverter: input 0 and 1 ----------------
+XI0 inv0 lo vdd inv
+XI1 inv1 hi vdd inv
+
+* ---------------- NAND2: inputs AB = 00, 01, 10, 11 ----------------
+XNA00 nand00 lo lo vdd nand2
+XNA01 nand01 lo hi vdd nand2
+XNA10 nand10 hi lo vdd nand2
+XNA11 nand11 hi hi vdd nand2
+
+* ---------------- NOR2: inputs AB = 00, 01, 10, 11 ----------------
+XNO00 nor00 lo lo vdd nor2
+XNO01 nor01 lo hi vdd nor2
+XNO10 nor10 hi lo vdd nor2
+XNO11 nor11 hi hi vdd nor2
+[dc]
+1
+VDD
+0.05
+0.8
+0.01
+[ana]
+1 0
+[end]
